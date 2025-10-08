@@ -12,18 +12,127 @@
 
   <!-- Estilos base -->
   <link rel="stylesheet" href="stile.css">
+  
 
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #333;
+      text-align: center;
+    }
 
-    .modal {
-      display: none;
+    header {
+      padding: 20px;
+    }
+
+    .arco {
+      font-size: 2.2em;
+      font-weight: bold;
+      margin-top: 20px;
+      display: inline-block;
+      transform: rotate(-3deg);
+      color: #ff0055;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .logo {
+      width: 120px;
+      margin: 10px auto;
+    }
+
+    .info {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      padding: 0 20px;
+      font-size: 1em;
+      line-height: 1.6;
+    }
+
+    .info p {
+      margin: 10px 0;
+    }
+
+    .info p::before {
+      content: "👉 ";
+      color: #4CAF50;
+    }
+
+    .grid-section {
+      display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
+      gap: 12px;
+      margin: 30px auto;
+      max-width: 800px;
+      padding: 0 10px;
+    }
+
+    .grid-item {
+      background: #e0f7fa;
+      border-radius: 12px;
+      padding: 12px;
+      width: 140px;
+      font-size: 0.9em;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .grid-item:hover {
+      transform: scale(1.05);
+      background: #b2ebf2;
+    }
+
+    .center-image {
+      width: 100%;
+      max-width: 300px;
+      margin: 20px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    /* Modal de imágenes */
+    .image-modal, .modal {
+      display: none;
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.85);
-      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .image-modal-content {
+      position: relative;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 90%;
+      max-height: 90%;
+      overflow: auto;
+    }
+
+    .image-modal-content img {
+      max-width: 100%;
+      margin-bottom: 12px;
+      border-radius: 8px;
+    }
+
+    .close-img-btn, .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 22px;
+      background: #656565;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      z-index: 1101;
     }
 
     .modal-content {
@@ -44,26 +153,6 @@
       pointer-events: none;
     }
 
-    .close-btn {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      font-size: 22px;
-      color: white;
-      cursor: pointer;
-      background: rgba(0,0,0,0.6);
-      border: none;
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: background 0.3s;
-      z-index: 1101;
-    }
-    .close-btn:hover { background: rgba(255,0,0,0.8); }
-
     .sound-btn {
       position: absolute;
       bottom: 20px;
@@ -81,14 +170,25 @@
       transition: transform 0.2s, background 0.3s, color 0.3s;
       z-index: 1101;
     }
+
     .sound-btn:hover {
       transform: translateX(-50%) scale(1.05);
       background: rgba(0,200,0,0.85);
       color: #fff;
     }
+
+    @media (min-width: 768px) {
+      .grid-item {
+        width: 160px;
+      }
+      .arco {
+        font-size: 3em;
+      }
+    }
   </style>
 </head>
 <body>
+
   <!-- Modal con el video -->
   <div id="promoModal" class="modal">
     <div class="modal-content">
@@ -101,12 +201,41 @@
     </div>
   </div>
 
-  <!-- Contenido normal -->
-  <header>
-    <h1>Bienvenidos a Mi Jardín Infantil</h1>
-    <p>Un lugar para aprender y crecer felices 🌱</p>
-  </header>
+  <!-- Título en arco -->
+  <div class="arco">Jardín Infantil My Happy World</div>
 
+  <!-- Logo -->
+  <img src="img/logo.png" alt="Logo del jardín" class="logo">
+
+  <!-- Información -->
+  <div class="info">
+    <p>¡Diviértete y aprende!</p>
+    <p>¡Un lugar seguro para ti! contamos con resolución de Secretaría de Educación N° 2468 del 17 de noviembre del 2.015.</p>
+    <p>Excelente equipo docente con gran experiencia y calidez.</p>
+    <p>Te invitamos a conocer nuestras actividades pedagógicas en redes sociales: Facebook Jardín Infantil My Happy World, Instagram @myhappyworldfacatativa, TikTok @myhappyworldfacatativa</p>
+    <p>¡Visítanos y conoce nuestra familia Happy!</p>
+  </div>
+
+  <!-- Imagen central -->
+  <img src="img/welcome.jpg" alt="Bienvenida" class="center-image">
+
+  <!-- Recuadros -->
+  <div class="grid-section">
+    <div class="grid-item" onclick="showImages(['img/metod.jpg','img/proyect.jpg'])">Metodología y proyectos</div>
+    <div class="grid-item" onclick="showImages(['img/cost-matri.jpg','img/cost-mens.jpg'])">Costos</div>
+    <div class="grid-item" onclick="showImages(['img/grados.jpg'])">Grados ofertados</div>
+    <div class="grid-item" onclick="showImages(['img/doc-soli.jpg'])">Documentos solicitados</div>
+    <div class="grid-item" onclick="showImages(['img/uniform.jpg'])">Uniformes</div>
+    <div class="grid-item" onclick="showImages(['img/insta.png'])">Nuestras instalaciones</div>
+  </div>
+
+  <!-- Modal de imágenes -->
+  <div id="imageModal" class="image-modal">
+    <div class="image-modal-content" id="imageContainer">
+      <button class="close-img-btn" onclick="closeImageModal()">×</button>
+    </div>
+  </div>
+  <!-- Script para mostrar imágenes -->
   <script>
     const modal = document.getElementById("promoModal");
     const video = document.getElementById("promoVideo");
@@ -141,6 +270,21 @@
       modal.style.display = "none";
       video.pause();
     });
+    function showImages(imagePaths) {
+      const container = document.getElementById("imageContainer");
+      container.innerHTML = '<button class="close-img-btn" onclick="closeImageModal()">×</button>';
+      imagePaths.forEach(path => {
+        const img = document.createElement("img");
+        img.src = path;
+        container.appendChild(img);
+      });
+      document.getElementById("imageModal").style.display = "flex";
+    }
+
+    function closeImageModal() {
+      document.getElementById("imageModal").style.display = "none";
+    }
   </script>
+
 </body>
 </html>

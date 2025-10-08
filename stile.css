@@ -2,11 +2,18 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f0f8ff;
-  text-align: center;
-  line-height: 1.6;
+  background-image: url("img/insta.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
-
+.info {
+  background: rgba(255, 255, 255, 0.9); /* blanco semitransparente */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
 header {
   background-color: #4caf50;
   color: white;
@@ -32,6 +39,7 @@ img, video {
   body {
     font-size: 14px; /* texto más pequeño en móvil */
     padding: 10px;
+    background-position: top;
   }
 
   header {
