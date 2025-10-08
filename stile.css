@@ -1,0 +1,52 @@
+/* Estilos generales */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  text-align: center;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #4caf50;
+  color: white;
+  padding: 20px;
+}
+
+h1 {
+  margin: 0;
+}
+
+main {
+  padding: 20px;
+}
+
+/* Imágenes y elementos multimedia se adaptan */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Media Query para pantallas pequeñas (celulares) */
+@media (max-width: 600px) {
+  body {
+    font-size: 14px; /* texto más pequeño en móvil */
+    padding: 10px;
+  }
+
+  header {
+    padding: 15px;
+  }
+
+  main {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+}
